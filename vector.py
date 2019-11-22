@@ -6,4 +6,15 @@ def getMag(v):
 def getUnitVec(v):
   return v/getMag(v)
 
+def getDotProduct(v1,v2):
+  return np.dot(v1,v2)
 
+def getCrossProduct(v1,v2):
+  return np.cross(v1,v2)
+
+def getAngleD(v1,v2):
+  theta=math.acos(np.dot(v1,v2)/(getMag(v1)*getMag(v2)))
+  return math.degrees(theta)
+
+def getAngleR(v1,v2):
+  return math.acos(np.dot(v1,v2)/(getMag(v1)*getMag(v2)))
