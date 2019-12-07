@@ -18,3 +18,8 @@ def getAngleD(v1,v2):
 
 def getAngleR(v1,v2):
   return math.acos(np.dot(v1,v2)/(getMag(v1)*getMag(v2)))
+
+def get_dist_pt_line(point,line_vec):
+  theta=getAngleD(point,line_vec)
+  mag=getMag(point)
+  return mag*np.sin(theta)
