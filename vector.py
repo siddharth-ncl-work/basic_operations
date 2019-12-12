@@ -17,7 +17,7 @@ def getAngleD(v1,v2):
   return math.degrees(theta)
 
 def getAngleR(v1,v2):
-  return math.acos(np.dot(v1,v2)/(getMag(v1)*getMag(v2)))
+  return np.arccos(np.dot(v1,v2)/(getMag(v1)*getMag(v2)))
 
 def get_dist_pt_line(point,line_vec):
   theta=getAngleR(point,line_vec)
