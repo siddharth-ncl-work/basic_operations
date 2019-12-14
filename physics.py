@@ -8,6 +8,7 @@ def getMI(atom_cords,atom_type):
   return _getMI([atomic_mass_dict[atom_type.lower()]],[distance])  
 
 def _getMI(mass_list,distance_list):
+  MI=0
   mr_list=zip(mass_list,distance_list)
   for m,r in mr_list:
     MI+=m*pow(r,2)
