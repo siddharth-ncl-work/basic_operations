@@ -1,4 +1,4 @@
-import vector
+from . import vector
 import config
 from atomic_mass import atomic_mass_dict
 
