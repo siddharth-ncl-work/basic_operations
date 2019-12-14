@@ -25,7 +25,7 @@ def getCom(cords,atom_list=None):
 
 def _getCom(mass_list,cords_list):
   com=[0.0,0.0,0.0]
-  mr_zip=zip(mass_list,cords_list)
+  mr_list=zip(mass_list,cords_list)
   for m,r in mr_list:
     com[0]+=m*r[0]
     com[1]+=m*r[1]
