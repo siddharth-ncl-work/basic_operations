@@ -4,7 +4,7 @@ from .atomic_mass import atomic_mass_dict
 
 def getMI(atom_cords,atom_type):
   distance=getMag(atom_cords)
-  return _getMI([atomic_mass_dict[atom_type]],[distance])  
+  return _getMI([atomic_mass_dict[atom_type.lower]],[distance])  
 
 def _getMI(mass_list,distance_list):
   mr_list=zip(mass_list,distance_list)
@@ -18,7 +18,7 @@ def getCom(cords,atom_list=None):
   if atom_list==None:
     atom_list=list(cords['atom_no'].values) 
   for atom_no in atom_list:
-    mass=atomic_mass_dict[cords[cords['atom_no']==atom_no]['atom'].values[0]]
+    mass=atomic_mass_dict[cords[cords['atom_no']==atom_no]['atom'].values[0].lower]
     mass_list.append(mass)
     cords_list.append(cords[cords['atom_no']==atom_no][['x','y','z']].values)
   return _getCom(mass_list,cords_list)
