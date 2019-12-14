@@ -1,6 +1,6 @@
 from . import vector
-import config
-from atomic_mass import atomic_mass_dict
+from . import config
+from .atomic_mass import atomic_mass_dict
 
 def getMI(atom_cords,atom_type):
   distance=getMag(atom_cords)
