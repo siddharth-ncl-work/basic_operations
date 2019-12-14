@@ -20,7 +20,7 @@ def getCom(cords,atom_list=None):
   for atom_no in atom_list:
     mass=atomic_mass_dict[cords[cords['atom_no']==atom_no]['atom'].values[0].lower()]
     mass_list.append(mass)
-    cords_list.append(cords[cords['atom_no']==atom_no][['x','y','z']].values)
+    cords_list.append(cords[cords['atom_no']==atom_no][['x','y','z']].values[0])
   return _getCom(mass_list,cords_list)
 
 def _getCom(mass_list,cords_list):
