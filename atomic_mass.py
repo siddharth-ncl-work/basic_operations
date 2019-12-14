@@ -7,4 +7,5 @@ atomic_mass_dict={
 'be':9.01,
 'ca':40,
 'si':28.0,
+'n':14
 }
