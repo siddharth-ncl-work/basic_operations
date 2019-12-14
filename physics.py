@@ -1,3 +1,4 @@
+import numpy as np
 from . import vector
 from . import config
 from .atomic_mass import atomic_mass_dict
