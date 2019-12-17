@@ -4,7 +4,7 @@ from . import config
 from .atomic_mass import atomic_mass_dict
 
 def getMI(atom_cords,atom_type):
-  distance=getMag(atom_cords)
+  distance=vector.getMag(atom_cords)
   return _getMI([atomic_mass_dict[atom_type.lower()]],[distance])  
 
 def _getMI(mass_list,distance_list):
