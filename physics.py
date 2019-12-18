@@ -47,5 +47,5 @@ def getTotalMass(cords,atom_list=None):
   for atom_no in atom_list:
     mass=atomic_mass.atomic_mass_dict[cords[cords['atom_no']==atom_no]['atom'].values[0].lower()]
     total_mass+=mass
-  return total_mass*contants.amu
+  return total_mass*constants.amu
 
