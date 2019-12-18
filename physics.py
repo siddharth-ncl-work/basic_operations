@@ -14,7 +14,7 @@ def _getMI(cords_list,mass_list,axis):
   for m,cords in mr_list:
     r=vector.get_dist_pt_line(cords,axis)
     MI+=m*pow(r,2)
-  return MI*config.amu*pow(config.angstrom,2)
+  return MI*constants.amu*pow(constants.angstrom,2)
 
 def getCom(cords,atom_list=None):
   mass_list=[]
