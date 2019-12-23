@@ -4,6 +4,8 @@ def getMag(v):
   return np.linalg.norm(v)
 
 def getUnitVec(v):
+  if getMag(v)==0:
+    return [0,0,0]
   return v/getMag(v)
 
 def getDotProduct(v1,v2):
