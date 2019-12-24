@@ -49,3 +49,38 @@ def getTotalMass(cords,atom_list=None):
     total_mass+=mass
   return total_mass*constants.amu
 
+def getRotMat(axis,theta):
+  R=np.zeros((3,3))
+  s=vector.getUnitVec(axis)
+  t=theta
+  vv=(1-cos(t))
+  R[0][0]=s[0]*s[0]*vv+cos(t)
+  R[0][1]=s[0]*s[1]*vv-s[2]*sin(t)
+  R[0][2]=s[0]*s[2]*vv+s[1]*sin(t)
+  R[1][0]=s[0]*s[1]*vv+s[2]*sin(t)
+  R[1][1]=s[1]*s[1]*vv+cos(t)
+  R[1][2]=s[1]*s[2]*vv-s[0]*sin(t)
+  R[2][0]=s[0]*s[2]*vv-s[1]*sin(t)
+  R[2][1]=s[1]*s[2]*vv+s[0]*sin(t)
+  R[2][2]=s[2]*s[2]*vv+cos(t)
+  return R
+
+def rotateAlongAxis(cords,axis,theta):
+  new_cords=cords.copy()
+  R=getRotMat(axis,theta)
+  _cords=cords[['x','y','z']].values
+  new_cords[['x','y','z']]=np.matmul(_cords,R.T)
+  return new_cords
+
+def translateAlongAxis(cords,axis,distance):
+  new_cords=cords.copy()
+  _axis=vector.getUnitVec(axis)
+  translation_vector=[0,0,0]
+  translation_vector[0]=distance*_axis[0]
+  translation_vector[1]=distance*_axis[1]
+  translation_vector[2]=distance*_axis[2]
+  new_cords['x']=new_cords['x']+translation_vector[0]
+  new_cords['y']=new_cords['y']+translation_vector[1]
+  new_cords['z']=new_cords['z']+translation_vector[2]
+  return new_cords
+
