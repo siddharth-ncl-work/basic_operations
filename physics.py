@@ -1,3 +1,4 @@
+from math import cos,sin
 import numpy as np
 
 from . import vector
