@@ -19,7 +19,7 @@ def getAngleD(v1,v2):
   return math.degrees(theta)
 
 def getAngleR(v1,v2):
-   v=np.dot(v1,v2)/(getMag(v1)*getMag(v2))
+  v=np.dot(v1,v2)/(getMag(v1)*getMag(v2))
   if v>1:
     v=1
   elif v<-1:
