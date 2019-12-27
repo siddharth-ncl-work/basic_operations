@@ -31,7 +31,7 @@ def get_dist_pt_line(point,line_vec):
   mag=getMag(point)
   return mag*np.sin(theta)
 
-def getDihedralAngle(p):
+def getDihedralAngle(p,unit='radians'):
     """Praxeolitic formula \
     1 sqrt, 1 cross product"""
     p0 = p[0]
@@ -59,7 +59,11 @@ def getDihedralAngle(p):
     # v and w may not be normalized but that's fine since tan is y/x
     x = np.dot(v, w)
     y = np.dot(np.cross(b1, v), w)
-    return np.degrees(np.arctan2(y, x))  
+    theta=np.arctan2(y, x)
+    if unit=='radians'
+      return theta
+    elif unit=='degrees'
+      np.degrees(theta)
 
 def getPlaneNormal(atoms_array):
   if atoms_array.shape!=(3,3):
