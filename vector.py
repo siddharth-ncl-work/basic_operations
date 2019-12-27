@@ -60,14 +60,14 @@ def getDihedralAngle(p,unit='radians'):
     x = np.dot(v, w)
     y = np.dot(np.cross(b1, v), w)
     theta=np.arctan2(y, x)
-    if unit=='radians'
+    if unit=='radians':
       return theta
-    elif unit=='degrees'
+    elif unit=='degrees':
       np.degrees(theta)
 
 def getPlaneNormal(atoms_array):
   if atoms_array.shape!=(3,3):
-    print 'please check atoms array'
+    print('please check atoms array')
     return
   v1=atoms_array[0]-atoms_array[1]
   v2=atoms_array[2]-atoms_array[1]
