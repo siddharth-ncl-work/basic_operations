@@ -61,7 +61,14 @@ def getDihedralAngle(p):
     y = np.dot(np.cross(b1, v), w)
     return np.degrees(np.arctan2(y, x))  
 
-
+def getPlaneNormal(atoms_array):
+  if atoms_array.shape!=(3,3):
+    print 'please check atoms array'
+    return
+  v1=atoms_array[0]-atoms_array[1]
+  v2=atoms_array[2]-atoms_array[1]
+  normal=np.cross(v1,v2)
+  return normal/norm(normal)
 
 if __name__=='__main__':
   from lib.io_chem import io
