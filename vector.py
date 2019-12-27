@@ -30,3 +30,90 @@ def get_dist_pt_line(point,line_vec):
   theta=getAngleR(point,line_vec)
   mag=getMag(point)
   return mag*np.sin(theta)
+
+def getDihedralAngle(p):
+    """Praxeolitic formula \
+    1 sqrt, 1 cross product"""
+    p0 = p[0]
+    p1 = p[1]
+    p2 = p[2]
+    p3 = p[3]
+
+    b0 = -1.0*(p1 - p0)
+    b1 = p2 - p1
+    b2 = p3 - p2
+
+    # normalize b1 so that it does not influence magnitude of vector
+    # rejections that come next
+    b1 /= np.linalg.norm(b1)
+
+    # vector rejections
+    # v = projection of b0 onto plane perpendicular to b1
+    #   = b0 minus component that aligns with b1
+    # w = projection of b2 onto plane perpendicular to b1
+    #   = b2 minus component that aligns with b1
+    v = b0 - np.dot(b0, b1)*b1
+    w = b2 - np.dot(b2, b1)*b1
+
+    # angle between v and w in a plane is the torsion angle
+    # v and w may not be normalized but that's fine since tan is y/x
+    x = np.dot(v, w)
+    y = np.dot(np.cross(b1, v), w)
+    return np.degrees(np.arctan2(y, x))  
+
+
+
+if __name__=='__main__':
+  from lib.io_chem import io
+  
+  file_path='benzene.xyz'
+  df=io.readFile(file_path)
+  print(df) 
+  p=df[df['atom_no'].isin([10,4,5,11])][['x','y','z']].values
+  print(getDihedralAngle(p))
+  p=df[df['atom_no'].isin([8,2,5,11])][['x','y','z']].values
+  print(getDihedralAngle(p))
+  p=df[df['atom_no'].isin([6,0,5,11])][['x','y','z']].values
+  print(getDihedralAngle(p))
+  #0.000057       80.537678      116.565051     -116.565051      -45.000000
+  p1 = np.array([
+                [ 1,           0,         0     ],
+                [ 0,           0,         0     ],
+                [ 0,           0,         1     ],
+                [ 0.999999,    0.000001,  1     ]
+                ])
+
+  # +x,+y
+  p2 = np.array([
+                [ 1,           0,         0     ],
+                [ 0,           0,         0     ],
+                [ 0,           0,         1     ],
+                [ 0.1,         0.6,       1     ]
+                ])
+
+  # -x,+y
+  p3 = np.array([
+                [ 1,           0,         0     ],
+                [ 0,           0,         0     ],
+                [ 0,           0,         1     ],
+                [-0.3,         0.6,       1     ]
+                ])
+  # -x,-y
+  p4 = np.array([
+                [ 1,           0,         0     ],
+                [ 0,           0,         0     ],
+                [ 0,           0,         1     ],
+                [-0.3,        -0.6,       1     ]
+                ])
+  # +x,-y
+  p5 = np.array([
+                [ 1,           0,         0     ],
+                [ 0,           0,         0     ],
+                [ 0,           0,         1     ],
+                [ 0.6,        -0.6,       1     ]
+                ])
+  print(getDihedralAngle(p1))
+  print(getDihedralAngle(p2))
+  print(getDihedralAngle(p3))
+  print(getDihedralAngle(p4))
+  print(getDihedralAngle(p5))
