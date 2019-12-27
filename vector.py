@@ -71,7 +71,7 @@ def getPlaneNormal(atoms_array):
     return
   v1=atoms_array[0]-atoms_array[1]
   v2=atoms_array[2]-atoms_array[1]
-  normal=np.cross(v1,v2)
+  normal=getCrossProduct(v1,v2)
   return getUnitVec(normal)
 
 if __name__=='__main__':
