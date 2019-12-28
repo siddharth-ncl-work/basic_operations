@@ -86,5 +86,5 @@ def translateAlongAxis(cords,axis,distance):
   new_cords['z']=new_cords['z']+translation_vector[2]
   return new_cords
 
-def getCOG(cords):
+def getCog(cords):
   return[cords['x'].mean(),cords['y'].mean(),cords['z'].mean()]
