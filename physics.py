@@ -5,6 +5,7 @@ from . import vector
 from . import atomic_mass
 from . import constants
 
+
 def getMI(atom_cords,atom_type,axis):
   distance=vector.getMag(atom_cords)
   return _getMI([atom_cords],[atomic_mass_dict[atom_type.lower()]],axis)  
@@ -85,3 +86,5 @@ def translateAlongAxis(cords,axis,distance):
   new_cords['z']=new_cords['z']+translation_vector[2]
   return new_cords
 
+def getCOG(cords):
+  return[cords['x'].mean(),cords['y'].mean(),cords['z'].mean()]
