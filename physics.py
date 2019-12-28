@@ -86,5 +86,10 @@ def translateAlongAxis(cords,axis,distance):
   new_cords['z']=new_cords['z']+translation_vector[2]
   return new_cords
 
-def getCog(cords,**kwargs):
-  return[cords['x'].mean(),cords['y'].mean(),cords['z'].mean()]
+def getCog(cords,atom_no_list=None):
+  if atom_no_list==None:
+    return[cords['x'].mean(),cords['y'].mean(),cords['z'].mean()]
+  else:
+    part_df=cords[cords['atom_no'].isin(atom_no_list)]
+    return [part_df['x'].mean(),part_df['y'].mean(),part_df['z'].mean()]
+
