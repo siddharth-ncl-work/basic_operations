@@ -8,7 +8,7 @@ from . import constants
 
 def getMI(atom_cords,atom_type,axis):
   distance=vector.getMag(atom_cords)
-  return _getMI([atom_cords],[atomic_mass_dict[atom_type.lower()]],axis)  
+  return _getMI([atom_cords],[atomic_mass.atomic_mass_dict[atom_type.lower()]],axis)  
 
 def _getMI(cords_list,mass_list,axis):
   MI=0
