@@ -74,9 +74,12 @@ def getPlaneNormal(atoms_array):
   normal=getCrossProduct(v1,v2)
   return getUnitVec(normal)
 
+def getProjection(v1,v2):
+  return getDotProduct(v1,v2)/getMag(v2)
+
 if __name__=='__main__':
+  '''
   from lib.io_chem import io
-  
   file_path='benzene.xyz'
   df=io.readFile(file_path)
   print(df) 
@@ -128,3 +131,8 @@ if __name__=='__main__':
   print(getDihedralAngle(p3))
   print(getDihedralAngle(p4))
   print(getDihedralAngle(p5))
+  '''
+  v1=np.array([1.0,3,-2])
+  v2=np.array([-2.0,4,-1])
+  p=getProjection(v1,v2)
+  print(p)
