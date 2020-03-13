@@ -1,5 +1,11 @@
 import numpy as np
 
+def isZero(tolerance=10):
+  for i in l:
+    if round(i,tolerance)!=0:
+      return False
+  return True
+
 def getMag(v):
   return np.linalg.norm(v)
 
@@ -15,10 +21,14 @@ def getCrossProduct(v1,v2):
   return np.cross(v1,v2)
 
 def getAngleD(v1,v2):
+  if isZero(v1) or isZero(v2):
+    return 0
   theta=math.acos(np.dot(v1,v2)/(getMag(v1)*getMag(v2)))
   return math.degrees(theta)
 
 def getAngleR(v1,v2):
+  if isZero(v1) or isZero(v2):
+    return 0
   v=np.dot(v1,v2)/(getMag(v1)*getMag(v2))
   if v>1:
     v=1
