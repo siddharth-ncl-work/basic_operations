@@ -1,7 +1,7 @@
 import numpy as np
 
-def isZero(tolerance=10):
-  for i in l:
+def isZero(v,tolerance=10):
+  for i in v:
     if round(i,tolerance)!=0:
       return False
   return True
