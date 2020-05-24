@@ -21,7 +21,7 @@ def _getMI(cords_list,mass_list,axis):
 def getCom(cords,atom_list=None):
   mass_list=[]
   cords_list=[]
-  if atom_list==None:
+  if type(atom_list)==type(None):
     atom_list=list(cords['atom_no'].values) 
   for atom_no in atom_list:
     mass=atomic_mass.atomic_mass_dict[cords[cords['atom_no']==atom_no]['atom'].values[0].lower()]
