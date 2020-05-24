@@ -87,7 +87,7 @@ def translateAlongAxis(cords,axis,distance):
   return new_cords
 
 def getCog(cords,atom_list=None):
-  if atom_list==None:
+  if type(atom_list)==type(None):
     return[cords['x'].mean(),cords['y'].mean(),cords['z'].mean()]
   else:
     part_df=cords[cords['atom_no'].isin(atom_list)]
