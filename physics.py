@@ -21,7 +21,7 @@ def _getMI(cords_list,mass_list,axis):
 def getCom(cords,atom_list=None):
   mass_list=[]
   cords_list=[]
-  if type(atom_list)==type(None):
+  if atom_list is None:
     atom_list=list(cords['atom_no'].values) 
   for atom_no in atom_list:
     mass=atomic_mass.atomic_mass_dict[cords[cords['atom_no']==atom_no]['atom'].values[0].lower()]
@@ -44,7 +44,7 @@ def _getCom(cords_list,mass_list):
 
 def getTotalMass(cords,atom_list=None):
   total_mass=0
-  if atom_list==None:
+  if atom_list is None:
     atom_list=list(cords['atom_no'].values)
   for atom_no in atom_list:
     mass=atomic_mass.atomic_mass_dict[cords[cords['atom_no']==atom_no]['atom'].values[0].lower()]
@@ -87,7 +87,7 @@ def translateAlongAxis(cords,axis,distance):
   return new_cords
 
 def getCog(cords,atom_list=None):
-  if type(atom_list)==type(None):
+  if atom_list is None:
     return[cords['x'].mean(),cords['y'].mean(),cords['z'].mean()]
   else:
     part_df=cords[cords['atom_no'].isin(atom_list)]
