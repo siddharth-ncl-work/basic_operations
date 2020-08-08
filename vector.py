@@ -1,3 +1,4 @@
+import math
 import numpy as np
 
 def isZero(v,tolerance=10):
