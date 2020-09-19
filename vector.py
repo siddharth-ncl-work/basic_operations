@@ -42,6 +42,9 @@ def get_dist_pt_line(point,line_vec):
   mag=getMag(point)
   return mag*np.sin(theta)
 
+def get_dist_pt_pt(p1,p2):
+  return np.sqrt((p2[0]-p1[0])**2+(p2[1]-p1[1])**2+(p2[2]-p1[2])**2)
+
 def getDihedralAngle(p,unit='radians'):
     """Praxeolitic formula \
     1 sqrt, 1 cross product"""
