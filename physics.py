@@ -18,7 +18,11 @@ def _getMI(cords_list,mass_list,axis):
     MI+=m*pow(r,2)
   return MI*constants.amu*pow(constants.angstrom,2)
 
-def getCom(cords,atom_list=None):
+def getCom(cords,atom_list=None,debug=False):
+  if debug:
+    print('basic operations: Calculating COM')
+    print('atom list:')
+    print(atom_list)
   mass_list=[]
   cords_list=[]
   if atom_list is None:
